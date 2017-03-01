@@ -16,15 +16,19 @@
 
 package in.co.mmbf.services.data.jpa.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import in.co.mmbf.services.data.jpa.domain.City;
-import in.co.mmbf.services.data.jpa.domain.Hotel;
+import in.co.mmbf.services.data.jpa.domain.MemberType;
 
-@RepositoryRestResource(collectionResourceRel = "hotels", path = "hotels")
-interface HotelRepository extends PagingAndSortingRepository<Hotel, Long> {
+@RepositoryRestResource(collectionResourceRel = "citys", path = "cities")
+interface MemberTypeRepository extends PagingAndSortingRepository<MemberType, Long> {
 
-	Hotel findByCityAndName(City city, String name);
+	Page<MemberType> findByNameContainingAndCountryContainingAllIgnoringCase(String name,
+			String country, Pageable pageable);
+
+	MemberType findByNameAndCountryAllIgnoringCase(String name, String country);
 
 }
