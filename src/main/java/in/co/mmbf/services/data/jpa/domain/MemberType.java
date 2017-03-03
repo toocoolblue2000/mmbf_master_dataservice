@@ -16,10 +16,10 @@ public class MemberType implements Serializable {
 	private String name;
 
 	@Column(length = 3)
-	private int maxLiveLoans;
+	private Integer maxLiveLoans;
 
-	@Column(scale=10, precision=2)
-	private BigDecimal max;
+	@Column(precision=10, scale=2)
+	private BigDecimal maxOutstandingLimit;
 
 	@Column(nullable = false)
 	private boolean active;
@@ -32,20 +32,20 @@ public class MemberType implements Serializable {
 		this.name = name;
 	}
 
-	public int getMaxLiveLoans() {
+	public Integer getMaxLiveLoans() {
 		return maxLiveLoans;
 	}
 
-	public void setMaxLiveLoans(int maxLiveLoans) {
+	public void setMaxLiveLoans(Integer maxLiveLoans) {
 		this.maxLiveLoans = maxLiveLoans;
 	}
 
-	public BigDecimal getMax() {
-		return max;
+	public BigDecimal getMaxOutstandingLimit() {
+		return maxOutstandingLimit;
 	}
 
-	public void setMax(BigDecimal max) {
-		this.max = max;
+	public void setMaxOutstandingLimit(BigDecimal maxOutstandingLimit) {
+		this.maxOutstandingLimit = maxOutstandingLimit;
 	}
 
 	public boolean isActive() {

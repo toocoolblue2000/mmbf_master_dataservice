@@ -33,9 +33,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import in.co.mmbf.services.data.RestApplication;
+
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes=RestApplication.class, webEnvironment=WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("mock")
 public class RestApplicationTest {
 
@@ -52,7 +54,7 @@ public class RestApplicationTest {
 	@Test
 	public void testHome() throws Exception {
 
-		this.mvc.perform(get("/")).andExpect(status().isOk())
+		this.mvc.perform(get("/collateral")).andExpect(status().isOk())
 				.andExpect(content().string(containsString("hotels")));
 	}
 }

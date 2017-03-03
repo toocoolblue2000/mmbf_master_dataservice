@@ -1,14 +1,17 @@
 package in.co.mmbf.services.data.jpa.service;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import in.co.mmbf.services.data.jpa.domain.MemberType;
 import in.co.mmbf.services.data.jpa.domain.Collateral;
+import in.co.mmbf.services.data.jpa.domain.CollateralType;
 
-@RepositoryRestResource(collectionResourceRel = "hotels", path = "hotels")
-interface CollateralRepository extends PagingAndSortingRepository<Collateral, Long> {
+@RepositoryRestResource(collectionResourceRel = "collaterals", path = "collateral")
+interface CollateralRepository extends CrudRepository<Collateral, Integer> {
 
-	Collateral findByCityAndName(MemberType city, String name);
+	List<Collateral> findByCollateralType(CollateralType collateralType);
 
+	List<Collateral> findAll();
 }

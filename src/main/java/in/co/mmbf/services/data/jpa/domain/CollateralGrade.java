@@ -16,10 +16,10 @@ public class CollateralGrade implements Serializable {
 	@Id
 	private String gradePurityCode;
 
-	@Column(scale = 2, precision = 2)
+	@Column(precision = 2, scale = 2)
 	private Float loanPercentPerUnit;
 
-	@Column(scale = 6, precision = 2)
+	@Column(precision = 6, scale = 2)
 	private Float addLessAmount;
 
 	@ManyToOne(optional = false)

@@ -16,23 +16,25 @@
 
 package in.co.mmbf.services.data.jpa.service;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import in.co.mmbf.services.data.RestApplication;
 import in.co.mmbf.services.data.jpa.domain.MemberType;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("mock")
+@SpringBootTest(classes=RestApplication.class, webEnvironment=WebEnvironment.RANDOM_PORT)
 public class CollateralRepositoryIntegrationTests {
 
 	@Autowired
@@ -41,7 +43,7 @@ public class CollateralRepositoryIntegrationTests {
 	@Test
 	public void findsFirstPageOfCities() {
 
-		Page<MemberType> cities = this.repository.findAll(new PageRequest(0, 10));
-		assertThat(cities.getTotalElements(), is(greaterThan(20L)));
+		List<MemberType> memberTypes = repository.findAll();
+		assertThat(memberTypes.size(), is(equalTo(5)));
 	}
 }

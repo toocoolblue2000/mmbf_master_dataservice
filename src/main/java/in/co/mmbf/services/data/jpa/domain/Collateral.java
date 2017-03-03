@@ -14,7 +14,7 @@ public class Collateral implements Serializable {
 	private static final long serialVersionUID = 5607580390902334715L;
 
 	@Id
-	private String code;
+	private Integer code;
 
 	@Column(length = 20)
 	private String name;
@@ -23,11 +23,11 @@ public class Collateral implements Serializable {
 	@JoinColumn(name="COLLATERAL_TYPE", nullable=false, updatable=false)
 	private CollateralType collateralType;
 
-	public String getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 
